@@ -1,30 +1,28 @@
 # Evil GPT
 
-A dark, purple neon chat UI for an AI with a sharp, villain-style personality. Evil GPT is a frontend: it connects to an OpenAI-compatible chat-completions API that you configure.
+A dark, purple neon chat UI for an AI with a sharp, villain-style personality. Evil GPT is a frontend that uses Groq's OpenAI-compatible chat-completions API by default.
 
 ## Features
 
 - Responsive dark-mode interface with a purple/pink neon theme.
 - Snarky, direct “Evil GPT” personality prompt.
-- Connect any provider that supports the OpenAI-compatible `/chat/completions` endpoint.
+- Groq connection defaults, with editable endpoint and model fields.
 - Conversation history for the current page session.
 - API key stays in browser memory only; it is not written to local storage or included in the repo.
 - API endpoint and model preferences are saved locally in your browser.
 
-## Run it
+## Run it with Groq
 
 1. Open `index.html` in a modern browser, or serve this folder with a local static server.
-2. Open **AI connection settings** (gear icon).
-3. Enter your provider's API base URL, model ID, and API key.
-4. Save, then send a message.
+2. Create an API key in your GroqCloud account.
+3. Open **AI connection settings** (gear icon).
+4. Use these settings:
+   - **API base URL:** `https://api.groq.com/openai/v1`
+   - **Model ID:** `openai/gpt-oss-20b`
+   - **API key:** your own Groq API key
+5. Save, then send a message.
 
-Example OpenRouter settings:
-
-- API base URL: `https://openrouter.ai/api/v1`
-- Model ID: `openai/gpt-4o-mini` (change it to a model available in your provider account)
-- API key: your own key from your provider
-
-The model ID above is only an example; provider offerings and prices change. Use a model that is actually available to your account.
+The default model is listed in Groq's supported-models documentation. You can change the model ID in settings to another model available to your account. Models, limits, and pricing can change.
 
 ## Publish with GitHub Pages
 
@@ -36,9 +34,9 @@ The model ID above is only an example; provider offerings and prices change. Use
 ## Security notes
 
 - **Never put an API key in source code or commit it to GitHub.**
-- The key entered in the settings dialog lives in browser memory and clears when the page is refreshed. Requests go directly to the API URL you configured.
-- Only enter a key for a provider you trust. A public site visitor needs their own key to use the app.
-- Because this is a static page, your chosen API provider must allow requests from the browser (CORS). If not, use a small backend proxy and keep the key in a server-side environment variable.
+- The key entered in the settings dialog lives in browser memory and clears when the page is refreshed. Requests go directly to the Groq API URL you configured.
+- Only enter a key for a provider you trust. A public site visitor needs their own key to use the app; a static GitHub Pages app does not hide a key from its owner.
+- Because this is a static page, browser requests require the provider to allow them (CORS). If a browser connection fails due to CORS, use a small backend proxy and keep the key in a server-side environment variable.
 - Evil GPT's “evil” persona is a writing style, not a promise to bypass a provider's safeguards. What it can answer also depends on the model and provider.
 
 ## Customization
