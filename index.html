@@ -148,7 +148,7 @@
         <div class="hero" id="hero">
           <div class="hero-mark">E</div>
           <h1>Meet your new <span>bad influence.</span></h1>
-          <p>Brutally direct answers, sharp wit, and zero corporate fluff. Connect an AI provider, then let the chaos begin.</p>
+          <p>Brutally direct answers, sharp wit, and zero corporate fluff. Connect Groq, then let the chaos begin.</p>
           <div class="suggestions">
             <button class="suggestion" data-prompt="Help me build a genuinely cool project for GitHub. Give me a concrete plan."><strong>⌘ &nbsp; Build something</strong><span>Turn a random idea into a real project.</span></button>
             <button class="suggestion" data-prompt="Explain a complicated topic like I have a brain and no patience for jargon."><strong>⚡ &nbsp; Explain it straight</strong><span>Smart answers without the lecture.</span></button>
@@ -174,9 +174,9 @@
   <div class="modal-backdrop" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
     <div class="modal">
       <div class="modal-head"><h2 id="settingsTitle">AI connection</h2><button class="icon-btn" id="closeSettings" aria-label="Close settings">×</button></div>
-      <p>Connect any OpenAI-compatible chat-completions API. Your key is held in memory only and is cleared when this page is refreshed.</p>
-      <div class="field"><label for="endpoint">API base URL</label><input id="endpoint" type="url" placeholder="https://openrouter.ai/api/v1" autocomplete="url"></div>
-      <div class="field"><label for="model">Model ID</label><input id="model" type="text" placeholder="openai/gpt-4o-mini" autocomplete="off"></div>
+      <p>Connect Groq or another OpenAI-compatible chat-completions API. Your key is held in memory only and is cleared when this page is refreshed.</p>
+      <div class="field"><label for="endpoint">API base URL</label><input id="endpoint" type="url" placeholder="https://api.groq.com/openai/v1" autocomplete="url"></div>
+      <div class="field"><label for="model">Model ID</label><input id="model" type="text" placeholder="openai/gpt-oss-20b" autocomplete="off"></div>
       <div class="field"><label for="apiKey">API key</label><input id="apiKey" type="password" placeholder="Paste your provider key" autocomplete="off" spellcheck="false"></div>
       <div class="small-note">The key is sent directly from your browser to the API base URL above. Only use a provider you trust. Do not publish someone else's key or put your key in the source code.</div>
       <div class="modal-actions"><button class="btn" id="forgetKey">Clear key</button><button class="btn" id="cancelSettings">Cancel</button><button class="btn primary" id="saveSettings">Save connection</button></div>
@@ -187,8 +187,8 @@
   "use strict";
   const $ = (id) => document.getElementById(id);
   const state = {
-    endpoint: localStorage.getItem("evilgpt.endpoint") || "https://openrouter.ai/api/v1",
-    model: localStorage.getItem("evilgpt.model") || "openai/gpt-4o-mini",
+    endpoint: localStorage.getItem("evilgpt.endpoint") || "https://api.groq.com/openai/v1",
+    model: localStorage.getItem("evilgpt.model") || "openai/gpt-oss-20b",
     apiKey: "",
     messages: [],
     busy: false
